@@ -97,12 +97,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (searchResults.length > 0) {
             // Remove previous current highlight
             searchResults.forEach(el => {
-                el.style.backgroundColor = 'rgba(0, 174, 239, 0.3)';
+                el.classList.remove('current');
             });
 
             // Highlight current result
             const current = searchResults[currentIndex];
-            current.style.backgroundColor = 'rgba(0, 174, 239, 0.6)';
+            current.classList.add('current');
             
             // Scroll into view
             current.scrollIntoView({

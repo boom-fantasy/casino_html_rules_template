@@ -167,10 +167,17 @@ a:hover {
 
 /* Search highlighting */
 mark {
-    background-color: rgb(195, 255, 0);
-    color: #000000;
+    background-color: rgb(0, 138, 202);
+    color: #ffffff;
     padding: 0 2px;
     border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+
+mark.current {
+    background-color:rgb(225, 255, 0);
+    color: #000000;
+
 }
 
 /* Tablet styles */
