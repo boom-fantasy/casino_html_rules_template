@@ -10,6 +10,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 header {
     position: fixed;
@@ -17,7 +18,7 @@ header {
     left: 0;
     right: 0;
     background-color: #1A1A1A;
-    padding: 15px 20px;
+    padding: 12px 20px;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -28,20 +29,23 @@ header {
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    flex-direction: row;
 }
 .logo {
-    height: 50px;
+    height: 45px;
     width: auto;
+    margin-left: 0;
+    margin-right: 20px;
 }
 .search-container {
-    flex: 1;
+    flex: 0 1 auto;
     display: flex;
     align-items: center;
     gap: 10px;
-    max-width: 600px;
+    max-width: 300px;
 }
 .search-bar {
-    flex: 1;
+    width: 200px;
     padding: 8px 15px;
     border: 2px solid #00AEEF;
     border-radius: 25px;
@@ -61,18 +65,20 @@ header {
 }
 .nav-buttons {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+    flex-shrink: 0;
 }
 .nav-button {
     background-color: #00AEEF;
     color: #FFFFFF;
     border: none;
     border-radius: 20px;
-    padding: 8px 15px;
+    padding: 8px 12px;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 .nav-button:hover {
     background-color: #0090c5;
@@ -81,6 +87,58 @@ header {
     background-color: #333;
     cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+    .header-content {
+        gap: 12px;
+    }
+    .logo {
+        height: 35px;
+        margin-left: 12px;
+    }
+    .search-bar {
+        width: 180px;
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    .nav-button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
+    header {
+        padding: 10px;
+    }
+    .header-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .logo {
+        height: 30px;
+        margin: 0;
+    }
+    .search-container {
+        width: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .search-bar {
+        width: 160px;
+        order: 1;
+    }
+    .nav-buttons {
+        width: 100%;
+        justify-content: center;
+        order: 2;
+        margin-top: 8px;
+    }
+}
+
 h1 {
     font-size: 24px;
     color: #00AEEF;
@@ -115,5 +173,7 @@ a:hover {
 }
 mark {
     background-color: rgb(195, 255, 0);
-    color: #FFFFFF;
+    color: #000000;
+    padding: 0 2px;
+    border-radius: 2px;
 } 
