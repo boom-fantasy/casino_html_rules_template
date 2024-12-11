@@ -7,21 +7,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchToggle = document.querySelector('.search-toggle');
     const searchContainer = document.querySelector('.search-container');
 
+    // Initialize mark.js
+    const markInstance = new Mark(mainContent);
+    let currentIndex = -1;
+    let searchResults = [];
+
     // Search toggle functionality
     if (searchToggle && searchContainer) {
         searchToggle.addEventListener('click', function() {
             searchToggle.classList.toggle('active');
             searchContainer.classList.toggle('active');
+            
             if (searchContainer.classList.contains('active')) {
                 searchBar.focus();
+            } else {
+                // Clear search when closing
+                searchBar.value = '';
+                markInstance.unmark();
+                currentIndex = -1;
+                searchResults = [];
+                prevButton.disabled = true;
+                nextButton.disabled = true;
             }
         });
     }
-
-    // Initialize mark.js
-    const markInstance = new Mark(mainContent);
-    let currentIndex = -1;
-    let searchResults = [];
 
     if (searchBar) {
         // Clear default placeholder on focus
