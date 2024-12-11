@@ -4,6 +4,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.getElementById('prevButton');
     const nextButton = document.getElementById('nextButton');
     const mainContent = document.querySelector('main');
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchContainer = document.querySelector('.search-container');
+
+    // Search toggle functionality
+    if (searchToggle) {
+        searchToggle.addEventListener('click', function() {
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                searchBar.focus();
+            }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchContainer.contains(e.target) && 
+                !searchToggle.contains(e.target) && 
+                window.innerWidth <= 480) {
+                searchContainer.classList.remove('active');
+            }
+        });
+    }
 
     // Initialize mark.js
     const markInstance = new Mark(mainContent);
