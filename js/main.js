@@ -8,20 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchContainer = document.querySelector('.search-container');
 
     // Search toggle functionality
-    if (searchToggle) {
+    if (searchToggle && searchContainer) {
         searchToggle.addEventListener('click', function() {
+            searchToggle.classList.toggle('active');
             searchContainer.classList.toggle('active');
             if (searchContainer.classList.contains('active')) {
                 searchBar.focus();
-            }
-        });
-
-        // Close search when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!searchContainer.contains(e.target) && 
-                !searchToggle.contains(e.target) && 
-                window.innerWidth <= 480) {
-                searchContainer.classList.remove('active');
             }
         });
     }
@@ -119,4 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // Handle escape key to close search
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchContainer.classList.contains('active')) {
+            searchToggle.classList.remove('active');
+            searchContainer.classList.remove('active');
+        }
+    });
 }); 
