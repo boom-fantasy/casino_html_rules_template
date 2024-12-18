@@ -28,7 +28,7 @@ class ContentHandler {
 
     async loadLanguage(lang) {
         try {
-            const response = await fetch(`../languages/${lang}.html`);
+            const response = await fetch(`languages/${lang}.html`);
             if (!response.ok) {
                 throw new Error(`Language ${lang} not found`);
             }
